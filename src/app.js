@@ -34,10 +34,25 @@ io.on('connection', socket => {
         io.emit('subscriptionList', subscriptionList);
     });
 
+    socket.on('switchPosition', switchPosition => {
+
+    	console.log('Switching Position ' + switchPosition.index1 + " with " + switchPosition.index2);
+
+    	swapArrayElements(subscriptionList, switchPosition.index1, switchPosition.index2);
+
+    	io.emit('subscriptionList', subscriptionList);
+    });
+
     io.emit('subscriptionList', subscriptionList);
 
     console.log(`Socket ${socket.id} has connected`);
 });
+
+var swapArrayElements = function(arr, indexA, indexB) {
+  var temp = arr[indexA];
+  arr[indexA] = arr[indexB];
+  arr[indexB] = temp;
+};
 
 http.listen(4444, () => {
     console.log('Listening on port 4444');
