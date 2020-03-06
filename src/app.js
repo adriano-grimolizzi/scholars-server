@@ -3,12 +3,12 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
 const subscriptionList = [{
-    id: 1,
+    id: 0,
     name: 'Adriano',
     song: 'Black',
     artist: 'Pearl Jam'
 }, {
-    id: 2,
+    id: 1,
     name: 'Valerio',
     song: 'Mr. Brightside',
     artist: 'Killers'
